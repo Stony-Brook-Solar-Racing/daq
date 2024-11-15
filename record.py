@@ -1,14 +1,21 @@
 import csv
 import os
 import time
+from datetime import datetime
 
 class Recording:
 
     def __init__(self, cols) -> None:
         # remove newline when deployed
         # os.path.dirname(os.path.abspath(__file__))
-        dir_path = os.path.dirname(os.path.abspath(__file__))
-        self.csv = open(dir_path + f'/logs/{time.time()}-readings.csv', mode='w', newline='')
+        # dir_path = os.path.dirname(os.path.abspath(__file__))
+
+        if not os.path.exists('./logs'):
+            os.mkdir('./logs')
+        
+        formatted_time = datetime.now().strftime('%m-$d-%Y-%H-%M-%S')
+
+        self.csv = open(f'./logs/{formatted_time}-readings.csv', mode='x', newline='')
         self.csv_writer = csv.writer(self.csv)
         self.cols = cols
         self.setup_csv()
@@ -19,15 +26,13 @@ class Recording:
 
         for i in range(self.cols):
             header.append(f'Voltage{i+1}')
-            header.append(f'Current{i+1}')
         self.csv_writer.writerow(header)
 
     def write_data(self, data):
         row = [time.time()]
-        for v,c in data:
-            row.append(v)
-            row.append(c)
-
+        for d in data:
+            row.append(d)
+            
         # Flushes data out to file immediately
         self.csv_writer.writerow(row)
         self.csv.flush()
@@ -35,4 +40,4 @@ class Recording:
 
     def close(self):
         self.csv.close()
-        print('Closed')
+        print('Closed csv.')
