@@ -3,7 +3,7 @@ from serial import Serial, SerialException
 import sys
 import logging
 
-from Volatage_reader import VoltageReader
+from volatage_reader import VoltageReader
 # Constants
 BAUDRATE = 9600
 
@@ -29,11 +29,18 @@ class Setup:
                 logging.error(err)
         
         if self.arduino == None:
+            print("Arduino not found\n")
+            print("Retrying in 5 seconds...")
+            sleep(5)
+            self.__setup_arduino
+
+    def __setup_db(self):
+        return 0
+
+    def __setup_voltage_reader(self):
+        self.__setup_arduino(self.db)
+        return 0
 
 
     def __init__(self):
-
-        
-
-
-
+        return 0
