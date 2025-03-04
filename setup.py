@@ -7,6 +7,7 @@ import logging
 from voltage_reader import VoltageReader
 # Constants
 BAUDRATE = 9600
+TIMEOUT = 1
 """
 logging.basicConfig(
     filename="/var/log/daq/daq.log",

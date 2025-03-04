@@ -11,7 +11,6 @@ class VoltageReader:
         arduino.reset_input_buffer()
 
         while true:
-            sleep(1)
             arduino = self.arduino
             data = arduino.readline()
             voltage = data.decode().strip().split()
