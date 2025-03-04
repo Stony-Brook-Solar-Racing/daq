@@ -3,7 +3,7 @@ from serial import Serial, SerialException
 import sys
 import logging
 
-from volatage_reader import VoltageReader
+from read_voltages import VoltageReader
 # Constants
 BAUDRATE = 9600
 
@@ -37,10 +37,8 @@ class Setup:
     def __setup_db(self):
         return 0
 
-    def __setup_voltage_reader(self):
-        self.__setup_arduino(self.db)
-        return 0
-
-
     def __init__(self):
-        return 0
+        self.__setup_db()
+        self.__setup_arduino()
+        logging.info("Starting voltage reader")
+        read_voltages()
