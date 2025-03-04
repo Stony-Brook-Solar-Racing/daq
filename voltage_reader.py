@@ -7,11 +7,11 @@ class VoltageReader:
         self.arduino = arduino
         
     def read_voltages(self):
+        arduino = self.arduino
         arduino.reset_output_buffer()
         arduino.reset_input_buffer()
 
-        while true:
-            arduino = self.arduino
+        while True:
             data = arduino.readline()
             voltage = data.decode().strip().split()
             print(voltage)

@@ -36,7 +36,7 @@ class Setup:
             print("Arduino not found\n")
             print("Retrying in 5 seconds...")
             sleep(5)
-            self.__setup_arduino
+            self.__setup_arduino()
 
     def __setup_db(self):
         db = ''
