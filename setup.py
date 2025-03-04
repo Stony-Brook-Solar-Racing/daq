@@ -1,6 +1,7 @@
 from glob import glob
 from serial import Serial, SerialException
 import sys
+from time import sleep
 import logging
 
 from voltage_reader import VoltageReader
@@ -14,7 +15,9 @@ logging.basicConfig(
 )
 """
 class Setup:
+
     def __setup_arduino(self):
+        self.arduino = None
         if sys.platform == "linux":
             ports = glob("/dev/ttyASM*")
         elif sys.platform.startswith('win'):
@@ -28,7 +31,7 @@ class Setup:
             except(OSError, SerialException) as err:
                 logging.error(err)
         
-        if self.arduino == None:
+        while self.arduino == None:
             print("Arduino not found\n")
             print("Retrying in 5 seconds...")
             sleep(5)
@@ -40,7 +43,9 @@ class Setup:
     def __init__(self):
         self.__setup_db()
         self.__setup_arduino()
-        print("Got here")
-        voltage_reader = VoltageReader(self.arduino, db)
+        voltage_reader = VoltageReader(self.arduino, None)
         logging.info("Starting voltage reader")
         voltage_reader.read_voltages()
+
+if __name__ == "__main__":
+    setup = Setup()
