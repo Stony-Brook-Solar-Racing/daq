@@ -6,13 +6,13 @@ import logging
 from voltage_reader import VoltageReader
 # Constants
 BAUDRATE = 9600
-
+"""
 logging.basicConfig(
     filename="/var/log/daq/daq.log",
     filemode='w+',
     level=logging.INFO
 )
-
+"""
 class Setup:
     def __setup_arduino(self):
         if sys.platform == "linux":

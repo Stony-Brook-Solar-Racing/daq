@@ -1,6 +1,9 @@
+from serial import Serial
+from time import sleep
+
 class VoltageReader:
 
-    def __init__(arduino: Serial, db: db):
+    def __init__(self, arduino: Serial, db):
         self.arduino = arduino
         
     def read_voltages(self):
