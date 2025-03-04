@@ -19,7 +19,7 @@ class Setup:
     def __setup_arduino(self):
         self.arduino = None
         if sys.platform == "linux":
-            ports = glob("/dev/ttyASM*")
+            ports = glob("/dev/ttyACM*")
         elif sys.platform.startswith('win'):
             ports = [f"COM{i}" for i in range(10)]
         else:

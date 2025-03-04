@@ -4,7 +4,6 @@ from time import sleep
 class VoltageReader:
 
     def __init__(self, arduino: Serial, db):
-        print("Got here")
         self.arduino = arduino
         
     def read_voltages(self):
