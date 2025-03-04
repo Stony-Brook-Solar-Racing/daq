@@ -14,6 +14,7 @@ class VoltageReader:
         while True:
             data = arduino.readline()
             voltage = data.decode().strip().split()
-            print(voltage)
+            if len(voltage) > 0:
+                print(f"v1: {voltage[0]}, v2: {voltage[1]}, diff: {voltage[2]}") 
 
         print("Exitted")
