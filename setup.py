@@ -5,6 +5,8 @@ from time import sleep
 import logging
 
 from voltage_reader import VoltageReader
+from database import Database
+
 # Constants
 BAUDRATE = 9600
 TIMEOUT = 1
@@ -38,13 +40,10 @@ class Setup:
             sleep(5)
             self.__setup_arduino()
 
-    def __setup_db(self):
-        db = ''
-
     def __init__(self):
-        self.__setup_db()
         self.__setup_arduino()
-        voltage_reader = VoltageReader(self.arduino, None)
+        db = Database()
+        voltage_reader = VoltageReader(self.arduino, db)
         logging.info("Starting voltage reader")
         voltage_reader.read_voltages()
 
