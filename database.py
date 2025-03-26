@@ -9,7 +9,7 @@ class Database():
     
     def __init__(self):
         
-        self.engine = create_engine("sqlite:///db/test.db", echo=True, pool_pre_ping=True)
+        self.engine = create_engine("sqlite:///db/test.db", echo=False, pool_pre_ping=True)
         inspect_obj = inspect(self.engine)
         
         # create tables if they don't exist yet

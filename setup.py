@@ -6,7 +6,7 @@ import logging
 
 from voltage_reader import VoltageReader
 from database import Database
-from daq_redis import DAQRedis
+# from daq_redis import DAQRedis
 
 # Constants
 BAUDRATE = 9600
@@ -43,11 +43,12 @@ class Setup:
 
     def __init__(self):
         self.__setup_arduino()
-        self.daq_redis = DAQRedis()
+        self.daq_redis = None
         db = Database()
         voltage_reader = VoltageReader(self.arduino, db, self.daq_redis)
         logging.info("Starting voltage reader")
         voltage_reader.read_voltages()
 
 if __name__ == "__main__":
+    sleep(5)
     setup = Setup()

@@ -23,14 +23,14 @@ class VoltageReader:
             data = arduino.readline()
             voltage = data.decode().strip().split()
             if len(voltage) > 0:
-                print(f"v1: {voltage[0]}, v2: {voltage[1]}, diff: {voltage[2]}\n") 
+                print(f"v1: {voltage[0]}, v2: {voltage[1]}") # , diff: {voltage[2]}\n") 
                 
                 db.add_voltage(pre_shunt=float(voltage[0]), post_shunt=float(voltage[1]))
-                curr = calc_current
-                ttd = self.calc_ttd(voltage[0], voltage[1], 0)
-                battery = calc_battery(voltage[0], voltage[1], 34, 38)
-                redis.set_value("ttd", ttd)
-                redis.set_value("battery", battery)
+                # curr = calc_current
+                # ttd = self.calc_ttd(voltage[0], voltage[1], 0)
+                # battery = calc_battery(voltage[0], voltage[1], 34, 38)
+                # redis.set_value("ttd", ttd)
+                # redis.set_value("battery", battery)
 
         print("Exitted")
 

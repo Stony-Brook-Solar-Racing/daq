@@ -1,4 +1,4 @@
-import redis 
+# import redis 
 
 class DAQRedis:
     def __init__(self, host='localhost', port=6379, decode_responses=True):
@@ -15,5 +15,5 @@ class DAQRedis:
         return self.redis_client.get(key)
 
 
-dq = DAQRedis()
-dq.set_value('voltage', 10)
+# dq = DAQRedis()
+# dq.set_value('voltage', 10)
