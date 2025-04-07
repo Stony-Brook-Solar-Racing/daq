@@ -1,11 +1,9 @@
 import can
 
-bus = can.interface.Bus(bustype='socketcan', channel='can0', bitrate=500000)
+bus = can.interface.Bus(interface='socketcan', channel='can0', bitrate=500000)
 
 def read_can_messages():
-
     print("Listening for CAN messages...")
-
     while True:
         message = bus.recv()
         if message is not None:
