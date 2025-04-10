@@ -1,4 +1,4 @@
-# import redis 
+import redis 
 
 class DAQRedis:
     def __init__(self, host='localhost', port=6379, decode_responses=True):
